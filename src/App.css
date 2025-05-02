@@ -1,0 +1,128 @@
+/* 基础样式 */
+:root {
+  --color-primary: #ff6b81;
+  --color-primary-light: #ff9eb5;
+  --color-primary-dark: #e84c63;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-bg: #ffffff;
+  --color-dark-bg: #1a1a1a;
+  --color-dark-200: #2a2a2a;
+  --color-dark-300: #3a3a3a;
+}
+
+/* 响应式宽度 */
+@media (max-width: 767px) {
+  .card-container {
+    width: 100%;
+    min-width: unset;
+    height: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    width: 700px;
+    height: 500px;
+  }
+}
+
+/* 暗色模式 */
+.dark {
+  --color-text: #f0f0f0;
+  --color-text-light: #c0c0c0;
+  --color-bg: var(--color-dark-bg);
+}
+
+.dark body {
+  background: linear-gradient(135deg, #2a1a1c 0%, #1a1a1a 100%);
+  color: var(--color-text);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #fff5f6 0%, #ffe4e8 100%);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+/* 主题颜色工具类 */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+/* 暗色模式工具类 */
+.dark .bg-white\/70 {
+  background-color: rgba(42, 42, 42, 0.7);
+}
+
+.dark .bg-dark-300\/60 {
+  background-color: rgba(58, 58, 58, 0.6);
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db;
+}
+
+.dark .via-gray-300 {
+  --tw-gradient-stops: var(--tw-gradient-from), #4b5563, var(--tw-gradient-to, transparent);
+}
+
+.dark .text-gray-700 {
+  color: #d1d5db;
+}
+
+/* 爱心光波特效 */
+.heart-wave {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-wave::before,
+.heart-wave::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  opacity: 0;
+  z-index: -1;
+}
+
+.heart-wave::before {
+  animation: wave 2s linear infinite;
+}
+
+.heart-wave::after {
+  animation: wave 2s linear infinite 1s;
+}
+
+@keyframes wave {
+  0% {
+    width: 1em;
+    height: 1em;
+    opacity: 0.4;
+  }
+  100% {
+    width: 3em;
+    height: 3em;
+    opacity: 0;
+  }
+}
