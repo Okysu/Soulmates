@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import { events } from '../config/events';
+import EventModal from './EventModal';
 
-function EventsPage() {
+interface EventsPageProps {
+  onEventSelect: (index: number) => void;
+}
+
+function EventsPage({ onEventSelect }: EventsPageProps) {
+  const [selectedEvent, setSelectedEvent] = useState<number | null>(null);
+
   // 格式化日期
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
@@ -18,7 +26,8 @@ function EventsPage() {
           {events.map((event, index) => (
             <div 
               key={index}
-              className="relative bg-white/70 dark:bg-dark-300/60 rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl"
+              className="relative bg-white/70 dark:bg-dark-300/60 rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer"
+              onClick={() => onEventSelect(index)}
             >
               {/* 时间线 */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary/30 rounded-full"></div>
@@ -52,6 +61,17 @@ function EventsPage() {
           ))}
         </div>
       </div>
+
+      {/* 模态框 */}
+      {selectedEvent !== null && (
+        <EventModal
+          isOpen={true}
+          onClose={() => setSelectedEvent(null)}
+          title={events[selectedEvent].title}
+          description={events[selectedEvent].description}
+          content={events[selectedEvent].content}
+        />
+      )}
     </div>
   );
 }

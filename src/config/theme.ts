@@ -30,7 +30,7 @@ export const defaultThemeConfig: ThemeConfig = {
         url: "https://q2.qlogo.cn/headimg_dl?dst_uin=2478843800&spec=100",
       },
     },
-    swap: true,
+    swap: false,
   },
 };
 
