@@ -20,7 +20,7 @@ function EventsPage({ onEventSelect }: EventsPageProps) {
   };
 
   return (
-    <div className="flex flex-col items-center w-full h-[calc(100vh-36rem)]">
+    <div className="flex flex-col items-center w-full">
       <div className="w-full h-full overflow-y-auto px-4">
         <div className="w-full max-w-2xl mx-auto space-y-6 py-4">
           {events.map((event, index) => (
